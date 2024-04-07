@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.allbs.phototool.dao.cm.CmPersonDao">
+    <resultMap type="cn.allbs.phototool.entity.cm.CmPersonEntity" id="CmPersonMap">
+        <result property="personId" column="person_id"/>
+        <result property="unitId" column="unit_id"/>
+        <result property="departId" column="depart_id"/>
+        <result property="name" column="name"/>
+        <result property="personGroup" column="person_group"/>
+        <result property="code" column="code"/>
+        <result property="tel" column="tel"/>
+        <result property="mobile" column="mobile"/>
+        <result property="sex" column="sex"/>
+        <result property="birthDate" column="birth_date"/>
+        <result property="address" column="address"/>
+        <result property="idCard" column="id_card"/>
+        <result property="photoUrl" column="photo_url"/>
+        <result property="remark" column="remark"/>
+        <result property="nation" column="nation"/>
+        <result property="nativePlace" column="native_place"/>
+        <result property="school" column="school"/>
+        <result property="major" column="major"/>
+        <result property="qualifications" column="qualifications"/>
+        <result property="degree" column="degree"/>
+        <result property="politicalBelief" column="political_belief"/>
+        <result property="postId" column="post_id"/>
+        <result property="safeRole" column="safe_role"/>
+        <result property="hiredate" column="hiredate"/>
+        <result property="workExperience" column="work_experience"/>
+        <result property="personType" column="person_type"/>
+        <result property="delFlg" column="del_flg"/>
+        <result property="createId" column="create_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateId" column="update_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="hkPersonId" column="hk_person_id"/>
+        <result property="hkPersonCode" column="hk_person_code"/>
+        <result property="isApply" column="is_apply"/>
+        <result property="synchronizationStatus" column="synchronization_status"/>
+        <result property="flag" column="flag"/>
+        <result property="hkFaceId" column="hk_face_id"/>
+        <result property="hkHandleStatus" column="hk_handle_status"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `person_id`,
+        `unit_id`,
+        `depart_id`,
+        `name`,
+        `person_group`,
+        `code`,
+        `tel`,
+        `mobile`,
+        `sex`,
+        `birth_date`,
+        `address`,
+        `id_card`,
+        `photo_url`,
+        `remark`,
+        `nation`,
+        `native_place`,
+        `school`,
+        `major`,
+        `qualifications`,
+        `degree`,
+        `political_belief`,
+        `post_id`,
+        `safe_role`,
+        `hiredate`,
+        `work_experience`,
+        `person_type`,
+        `del_flg`,
+        `create_id`,
+        `create_time`,
+        `update_id`,
+        `update_time`,
+        `hk_person_id`,
+        `hk_person_code`,
+        `is_apply`,
+        `synchronization_status`,
+        `flag`,
+        `hk_face_id`,
+        `hk_handle_status`
+    </sql>
+
+    <select id="queryList" resultType="cn.allbs.phototool.vo.cm.CmPersonVO">
+        select
+        `person_id`,
+        `unit_id`,
+        `depart_id`,
+        `name`,
+        `person_group`,
+        `code`,
+        `tel`,
+        `mobile`,
+        `sex`,
+        `birth_date`,
+        `address`,
+        `id_card`,
+        `photo_url`,
+        `remark`,
+        `nation`,
+        `native_place`,
+        `school`,
+        `major`,
+        `qualifications`,
+        `degree`,
+        `political_belief`,
+        `post_id`,
+        `safe_role`,
+        `hiredate`,
+        `work_experience`,
+        `person_type`,
+        `del_flg`,
+        `create_id`,
+        `create_time`,
+        `update_id`,
+        `update_time`,
+        `hk_person_id`,
+        `hk_person_code`,
+        `is_apply`,
+        `synchronization_status`,
+        `flag`,
+        `hk_face_id`,
+        `hk_handle_status`
+        from cm_person
+        <where>
+            AND del_flg = 0
+            <if test="cmPersonDTO.personId != null">
+                AND `person_id` = #{cmPersonDTO.personId}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.unitId != null">
+                AND `unit_id` = #{cmPersonDTO.unitId}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.departId != null">
+                AND `depart_id` = #{cmPersonDTO.departId}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.name != null and cmPersonDTO.name != ''">
+                AND `name` like concat('%', #{cmPersonDTO.name} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.personGroup != null">
+                AND `person_group` = #{cmPersonDTO.personGroup}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.code != null and cmPersonDTO.code != ''">
+                AND `code` like concat('%', #{cmPersonDTO.code} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.tel != null and cmPersonDTO.tel != ''">
+                AND `tel` like concat('%', #{cmPersonDTO.tel} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.mobile != null and cmPersonDTO.mobile != ''">
+                AND `mobile` like concat('%', #{cmPersonDTO.mobile} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.sex != null">
+                AND `sex` = #{cmPersonDTO.sex}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.birthDate != null">
+                AND `birth_date` = #{cmPersonDTO.birthDate}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.address != null and cmPersonDTO.address != ''">
+                AND `address` like concat('%', #{cmPersonDTO.address} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.idCard != null and cmPersonDTO.idCard != ''">
+                AND `id_card` like concat('%', #{cmPersonDTO.idCard} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.photoUrl != null and cmPersonDTO.photoUrl != ''">
+                AND `photo_url` like concat('%', #{cmPersonDTO.photoUrl} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.remark != null and cmPersonDTO.remark != ''">
+                AND `remark` like concat('%', #{cmPersonDTO.remark} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.nation != null and cmPersonDTO.nation != ''">
+                AND `nation` like concat('%', #{cmPersonDTO.nation} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.nativePlace != null and cmPersonDTO.nativePlace != ''">
+                AND `native_place` like concat('%', #{cmPersonDTO.nativePlace} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.school != null and cmPersonDTO.school != ''">
+                AND `school` like concat('%', #{cmPersonDTO.school} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.major != null and cmPersonDTO.major != ''">
+                AND `major` like concat('%', #{cmPersonDTO.major} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.qualifications != null">
+                AND `qualifications` = #{cmPersonDTO.qualifications}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.degree != null and cmPersonDTO.degree != ''">
+                AND `degree` like concat('%', #{cmPersonDTO.degree} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.politicalBelief != null">
+                AND `political_belief` = #{cmPersonDTO.politicalBelief}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.postId != null and cmPersonDTO.postId != ''">
+                AND `post_id` like concat('%', #{cmPersonDTO.postId} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.safeRole != null">
+                AND `safe_role` = #{cmPersonDTO.safeRole}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.hiredate != null">
+                AND `hiredate` = #{cmPersonDTO.hiredate}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.workExperience != null and cmPersonDTO.workExperience != ''">
+                AND `work_experience` like concat('%', #{cmPersonDTO.workExperience} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.personType != null">
+                AND `person_type` = #{cmPersonDTO.personType}
+            </if>
+            AND del_flg = 0
+            AND del_flg = 0
+            <if test="cmPersonDTO.createId != null">
+                AND `create_id` = #{cmPersonDTO.createId}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.createTime != null">
+                AND `create_time` = #{cmPersonDTO.createTime}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.updateId != null">
+                AND `update_id` = #{cmPersonDTO.updateId}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.updateTime != null">
+                AND `update_time` = #{cmPersonDTO.updateTime}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.hkPersonId != null and cmPersonDTO.hkPersonId != ''">
+                AND `hk_person_id` like concat('%', #{cmPersonDTO.hkPersonId} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.hkPersonCode != null and cmPersonDTO.hkPersonCode != ''">
+                AND `hk_person_code` like concat('%', #{cmPersonDTO.hkPersonCode} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.isApply != null">
+                AND `is_apply` = #{cmPersonDTO.isApply}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.synchronizationStatus != null">
+                AND `synchronization_status` = #{cmPersonDTO.synchronizationStatus}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.flag != null">
+                AND `flag` = #{cmPersonDTO.flag}
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.hkFaceId != null and cmPersonDTO.hkFaceId != ''">
+                AND `hk_face_id` like concat('%', #{cmPersonDTO.hkFaceId} ,'%')
+            </if>
+            AND del_flg = 0
+            <if test="cmPersonDTO.hkHandleStatus != null and cmPersonDTO.hkHandleStatus != ''">
+                AND `hk_handle_status` like concat('%', #{cmPersonDTO.hkHandleStatus} ,'%')
+            </if>
+        </where>
+    </select>
+</mapper>

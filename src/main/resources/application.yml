@@ -1,3 +1,33 @@
 spring:
   application:
-    name=photo-tool
+    name: photo-tool
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST_DEV:pc-server}:3306/sxpc
+    username: root
+    password: ${PC_MYSQL_PWD:123456}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 60000
+oss:
+  endpoint: http://pc-server:9000
+  region: us-west-rack-2
+  # minio账号或者
+  access-key: minio
+  # 密码
+  secret-key: 123456
+  bucket-name:
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*/*.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-handlers-package: cn.allbs.admin.config.handler
